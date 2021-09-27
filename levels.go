@@ -1,28 +1,29 @@
-package core
+package logg
 
-type ILevels interface {
-	ErrorInterface
-	WarningInterface
-	InfoInterface
-	PanicInterface
+type Levels interface {
+	ErrorLevel
+	WarningLevel
+	InfoLevel
+	PanicLevel
 }
 
-type ErrorInterface interface {
+type ErrorLevel interface {
 	Errorf(patter string, args ...interface{})
 	Error(patter string, args ...interface{})
 }
 
-type WarningInterface interface {
+type WarningLevel interface {
 	Warningf(patter string, args ...interface{})
 	Warning(patter string, args ...interface{})
 }
 
-type PanicInterface interface {
+type PanicLevel interface {
 	Panicf(patter string, args ...interface{})
+	//Panic will break up your code after print the error, os.Exit(0)
 	Panic(patter string, args ...interface{})
 }
 
-type InfoInterface interface {
+type InfoLevel interface {
 	Infof(patter string, args ...interface{})
 	Info(patter string, args ...interface{})
 }

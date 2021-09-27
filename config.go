@@ -1,4 +1,4 @@
-package core
+package logg
 
 type DefaultConfig struct {
 	stack string

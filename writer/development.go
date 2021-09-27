@@ -2,17 +2,17 @@ package writer
 
 import (
 	"fmt"
-	"github.com/ecocentauro/logg/core"
+	"github.com/hyperyuri/logg"
 )
 
 type debug struct {
 }
 
-func (s *debug) Write(m core.Message) error {
+func (s *debug) Write(m *logg.Message) {
 	fmt.Println(m.String())
-	return nil
 }
 
+//WithDebugMode set the logs to show in terminal
 func WithDebugMode() *debug {
 	return &debug{}
 }
