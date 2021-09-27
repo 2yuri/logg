@@ -1,6 +1,6 @@
 # 🔥 logg 
 
-Open Source Cloud logging engine in Go.
+Open Source Cloud logging library in Go.
 
 ## Instalation
 ``go get -u github.com/hyperyuri/logg``
