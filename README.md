@@ -3,7 +3,9 @@
 ## Open Source Cloud logging library in Go. 
 
 ## About the project
-- Send your logs to kafka, rabbitMQ or REST! (Feel free to implement more writers if you want!)
+- Connect your golang microservices logs with this engine!
+- Send your logs to kafka, rabbitMQ or REST! And then manage them!
+- Feel free to implement more writers
 
 ## Instalation
 ``go get -u github.com/hyperyuri/logg``
