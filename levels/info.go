@@ -12,12 +12,10 @@ type Info struct {
 func (s *Info) Info(patter string, args ...interface{}) {
 	m := logg.NewMessage(logg.InfoType, fmt.Sprintf(patter, args...), s.Stack(), s.App())
 
-	go func() {
-		s.Writer.Write(m)
-	}()
+	s.Writer.Write(m)
 }
 
-func (s *Info) Infof(patter string, args ...interface{}) {
+func (s *Info) SyncInfo(patter string, args ...interface{}) {
 	m := logg.NewMessage(logg.InfoType, fmt.Sprintf(patter, args...), s.Stack(), s.App())
 
 	go func() {

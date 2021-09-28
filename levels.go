@@ -8,22 +8,30 @@ type Levels interface {
 }
 
 type ErrorLevel interface {
-	Errorf(patter string, args ...interface{})
+	//Error format to an error log and send to some writer
 	Error(patter string, args ...interface{})
+
+	//SyncError run in concurrency, format to an error log and send to some writer
+	SyncError(patter string, args ...interface{})
 }
 
 type WarningLevel interface {
-	Warningf(patter string, args ...interface{})
+	//Warning format to a warning log and send to some writer
 	Warning(patter string, args ...interface{})
+
+	//SyncWarning run in concurrency, format to a warning log and send to some writer
+	SyncWarning(patter string, args ...interface{})
 }
 
 type PanicLevel interface {
-	Panicf(patter string, args ...interface{})
-	//Panic will break up your code after print the error, os.Exit(0)
+	//Panic format to a PANIC log and send to some writer, after it runs os.Exit
 	Panic(patter string, args ...interface{})
 }
 
 type InfoLevel interface {
-	Infof(patter string, args ...interface{})
+	//Info format to a info log and send to some writer
 	Info(patter string, args ...interface{})
+
+	//SyncInfo run in concurrency, format to a info log and send to some writer
+	SyncInfo(patter string, args ...interface{})
 }

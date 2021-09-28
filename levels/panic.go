@@ -10,17 +10,9 @@ type Panic struct {
 	*logg.Logger
 }
 
-func (s *Panic) Panicf(patter string, args ...interface{}) {
-	m := logg.NewMessage(logg.PanicType, fmt.Sprintf(patter, args...), s.Stack(), s.App())
-	s.Writer.Write(m)
-
-	os.Exit(0)
-}
-
 func (s *Panic) Panic(patter string, args ...interface{}) {
 	m := logg.NewMessage(logg.PanicType, fmt.Sprintf(patter, args...), s.Stack(), s.App())
 	s.Writer.Write(m)
 
 	os.Exit(0)
 }
-
