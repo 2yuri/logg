@@ -56,12 +56,14 @@ func (s *Message) ToJSON() interface{} {
 		Type string `json:"type,omitempty"`
 		Stack string `json:"stack,omitempty"`
 		App string `json:"app,omitempty"`
+		Date string `json:"date,omitempty"`
 	}{
 		s.text,
 		s.path,
 		s.levelLabel,
 		s.stack,
 		s.app,
+		s.datetime,
 	}
 }
 
