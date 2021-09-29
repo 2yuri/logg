@@ -8,10 +8,18 @@ type Logger struct {
 }
 
 func (l *Logger) Stack() string {
+	if l.config == nil {
+		return ""
+	}
+
 	return l.config.stack
 }
 
 func (l *Logger) App() string {
+	if l.config == nil {
+		return ""
+	}
+
 	return l.config.app
 }
 
