@@ -9,13 +9,15 @@ import (
 
 type Message struct {
 	text string
-	datetime string
+	datetime time.Time
+	dateFormated string
 	path string
 	levelLabel string
 	stack string
 	app string
 }
 
+//NewMessage create the message that will send to writers
 func NewMessage(level int, text, stack, app string) *Message {
 	m := &Message{text: text, stack: stack, app: app}
 	m.setLevelLabel(level)
@@ -26,7 +28,8 @@ func NewMessage(level int, text, stack, app string) *Message {
 }
 
 func (s *Message) setDatetime(datetime time.Time) {
-	s.datetime = datetime.Format("2006/01/02 15:04:05")
+	s.datetime = datetime
+	s.dateFormated = datetime.Format("2006/01/02 15:04:05")
 }
 
 func (s *Message) setPath() {
@@ -49,6 +52,7 @@ func (s *Message) setLevelLabel(level int) {
 	}
 }
 
+//ToJSON export the message to JSON
 func (s *Message) ToJSON() interface{} {
 	return struct {
 		Message string `json:"message,omitempty"`
@@ -56,7 +60,7 @@ func (s *Message) ToJSON() interface{} {
 		Type string `json:"type,omitempty"`
 		Stack string `json:"stack,omitempty"`
 		App string `json:"app,omitempty"`
-		Date string `json:"date,omitempty"`
+		Date time.Time `json:"date,omitempty"`
 	}{
 		s.text,
 		s.path,
@@ -67,6 +71,7 @@ func (s *Message) ToJSON() interface{} {
 	}
 }
 
+//String export the message to string
 func (s *Message) String() string {
-	return fmt.Sprintf("%v %s %s - %s", s.datetime, s.path, s.levelLabel, s.text)
+	return fmt.Sprintf("%v %s %s - %s", s.dateFormated, s.path, s.levelLabel, s.text)
 }
