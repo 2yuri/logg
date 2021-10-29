@@ -18,7 +18,7 @@ const (
 	LOG_MESSAGE   = "Testing rest"
 )
 
-func Test_restW_Write(t *testing.T) {
+func Test_WithRestApiMode(t *testing.T) {
 
 	body := struct {
 		Message string `json:"message,omitempty"`
